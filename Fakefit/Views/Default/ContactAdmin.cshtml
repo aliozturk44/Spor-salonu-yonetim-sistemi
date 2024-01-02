@@ -1,0 +1,82 @@
+﻿@model List<Fakefit.Models.contact>
+@{
+    ViewBag.Title = "ContactAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Dersler</h4>
+        <div class="d-inline-flex">
+            <p class="m-0 text-white"><a class="text-white" href="@Url.Action("IndexAdmin","Default")">Ana Sayfa</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Dersler</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<div class="container mb-5" style="height: 400px; overflow: scroll; width: 100%;">
+    <h2>İletişim Tablosu</h2>
+
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-bordered table-stripedy">
+        <thead>
+            <tr>
+                <th>İsim</th>
+                <th>Mail</th>
+                <th>Telefon</th>
+                <th>Konu</th>
+                <th>Mesaj</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+
+            @foreach (var item in Model)
+            {
+
+
+
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.mail</td>
+                    <td>@item.phone</td>
+                    <td>@item.topic</td>
+                    <td>@item.message</td>
+                    <td>
+                        @using (Html.BeginForm("DeleteContact", "Default", new { FormMethod.Post }))
+                        {
+                            var id = item.id;
+                            <input type="hidden" name="id" value="@id" />
+                            <button class="btn btn-danger" type="submit" id="sendMessageButton">Sil</button>
+
+                        }
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+<!-- Back to Top -->
+<a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/lib/easing/easing.min.js"></script>
+<script src="~/Content/lib/waypoints/waypoints.min.js"></script>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

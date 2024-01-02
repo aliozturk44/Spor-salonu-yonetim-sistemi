@@ -1,0 +1,83 @@
+﻿@model Fakefit.Models.register
+@{
+    ViewBag.Title = "Giriş";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Giriş</h4>
+            <div class="d-inline-flex">
+                <p class="m-0 text-white"><a class="text-white" href="@Url.Action("Index","Default")">Ana Sayfa</a></p>
+                <p class="m-0 text-white px-2">/</p>
+                <p class="m-0 text-white">Giriş</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <!-- Blog Detail Start -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex">
+                <img class="img-fluid d-flex mb-4 mb-lg-0" style="width:700px;height:500px" src="~/Content/img/about.jpg" alt="Image">
+            </div>
+
+            <div class="container-fluid d-flex p-0  col-md-6" style="margin-top:70px">
+                <div id="blog-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="w-100" src="~/Content/img/sporsalonu.jpg" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="container pt-5">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 text-center mb-3">
+                                            <H1 class="text-primary font-weight-bold">Giriş</H1>
+                                        </div>
+                                        <div class="col-sm-12 text-center">
+                                            <div class="register-form col-sm-12">
+                                                @if (ViewBag.hata != null)
+                                                {
+                                                <div class="alert alert-danger mt-4">
+                                                    @ViewBag.Hata
+                                                </div>
+                                                }
+
+                                                @using (Html.BeginForm("Alogin", "Default", new { FormMethod.Post, @class = "col-sm-12 align-self-center mb-5  align-content-cente" }))
+                                                {
+
+                                                    <div class="control-group col-sm-12">
+
+                                                        @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "User Name", autofocus = "autofocus" })
+                                                        <p class="help-block text-danger"></p>
+                                                    </div>
+                                                    <div class="control-group col-sm-12">
+
+                                                        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Password" })
+                                                        <p class="help-block text-danger"></p>
+                                                    </div>
+
+                                                    <div class="col-md-12 pb-5 text-center mb-5 text-align: center;">
+                                                        <button class="btn btn-outline-light btn-info" type="submit" id="sendMessageButton">Giriş</button>
+                                                        <button class="btn btn-outline-light btn-info" type="submit" id="sendMessageButton">Şifremi Unuttum</button>
+                                                    </div>
+
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+       
+

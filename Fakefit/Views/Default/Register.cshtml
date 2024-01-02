@@ -1,0 +1,182 @@
+﻿@model List<Fakefit.Models.register>
+@{
+    ViewBag.Title = "Kayıt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-3" style="min-height: 400px">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Kayıt İşlemleri</h4>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-fluid p-0">
+    <div id="blog-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 810px">
+                <img style="width:100%;height:100%" src="~/Content/img/sporsalonu.jpg" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="container pt-5">
+                        <div class="row align-items-center mt-5">
+
+                            <div class="col-sm-12 text-center mb-2">
+
+                                @if (ViewBag.hata == "Kayıt Başarıyla oluşturuldu..")
+                                {
+                                    <div class="alert alert-success mt-4 d-flex align-items-center justify-content-center">
+                                        @ViewBag.Hata
+                                    </div>
+                                }
+                                else if (ViewBag.hata != null)
+                                {
+                                    <div class="alert alert-danger mt-4 d-flex align-items-center justify-content-center">
+                                        @ViewBag.Hata
+                                    </div>
+
+                                }
+                                <H1 class="text-primary font-weight-bold">Kayıt</H1>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                <div class="register-form col-sm-12">
+                                    <div id="success"></div>
+                                    <form action="/Default/Register" method="post" name="sentMessage" class="col-sm-6 align-self-center mb-5  align-content-cente" id="registerForm" novalidate="novalidate" style="margin-left:273px">
+
+                                        <div class="control-group col-sm-12">
+                                            <input type="text" class="form-control" name="Name" placeholder="İsim" required="required" data-validation-required-message="Please enter your name" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="text" class="form-control" name="Surname" placeholder="Soy isim" required="required" data-validation-required-message="Please enter your surname" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="text" class="form-control" name="Username" placeholder="Kullanıcı adı" required="required" data-validation-required-message="Please enter a username" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="password" class="form-control" name="Password" id="pasword" placeholder="Şifre" required="required" data-validation-required-message="Please enter a password" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="email" class="form-control" name="Email" placeholder="email" required="required" data-validation-required-message="Please enter a email" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="tel" class="form-control" name="phone" id="email" placeholder="Telefon" required="required" data-validation-required-message="Please enter your email" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="text" class="form-control" name="Tall" placeholder="Boy" required="required" data-validation-required-message="Please enter tall" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="text" class="form-control" name="Kg" placeholder="Kg" required="required" data-validation-required-message="Please enter a weight" />
+
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <select class="form-control mb-3" name="User">
+                                                <option>----</option>
+                                                <option>Üye</option>
+                                                <option>Eğitmen</option>
+                                                <option>Admin</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="date" class="form-control" name="Startdate" placeholder="Başlangıç tarihi" required="required" data-validation-required-message="Please enter start date the course" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group col-sm-12">
+                                            <input type="date" class="form-control" name="Finishdate" placeholder="Bitiş tarihi" required="required" data-validation-required-message="Please enter start date the course" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+
+
+
+                                        <div class="col-md-12 pb-5 text-center mb-5 text-align: center;">
+                                            <button class="btn btn-outline-light btn-info" type="submit" id="sendMessageButton">Kayıt Et</button>
+                                        </div>
+                                    </form>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container mt-5" style="height: 400px; overflow: scroll; width: 100%;">
+    <h2>Kayıtlar Tablosu</h2>
+
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-bordered table-stripedy">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Kullanıcı_Adı</th>
+                <th>Şifre</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Boy</th>
+                <th>Kilo</th>
+                <th>Başlangıç_T</th>
+                <th>Bitiş_T</th>
+                <th>Ünvanı</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.surname</td>
+                    <td>@item.username</td>
+                    <td>@item.password</td>
+                    <td>@item.email</td>
+                    <td>@item.phone</td>
+                    <td>@item.tall</td>
+                    <td>@item.kg</td>
+                    <td>@item.startdate</td>
+                    <td>@item.finishdate</td>
+                    <td>@item.user</td>
+                    <td>
+                        @using (Html.BeginForm("DeleteUser", "Default", new { FormMethod.Post }))
+                        {
+                            var id = item.id;
+                            <input type="hidden" name="id" value="@id" />
+                            <button class="btn btn-danger" type="submit" id="sendMessageButton">Sil</button>
+
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>

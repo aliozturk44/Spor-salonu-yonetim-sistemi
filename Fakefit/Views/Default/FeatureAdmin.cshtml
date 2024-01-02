@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "FeatureAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Hizmetlerimiz</h4>
+        <div class="d-inline-flex">
+            <p class="m-0 text-white"><a class="text-white" href="@Url.Action("IndexAdmin","Default")">Ana Sayfa</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Hizmetlerimiz</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- GYM Feature Start -->
+<div class="container feature pt-5">
+    <div class="d-flex flex-column text-center mb-5">
+        <h4 class="text-primary font-weight-bold">Neden Bizi Seçmelisiniz?</h4>
+        <h4 class="display-4 font-weight-bold">FakeFitin Avantajlı Dünyası</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-5">
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <img class="img-fluid mb-3 mb-sm-0" src="~/Content/img/feature-1.jpg" alt="Image">
+                    <i class="flaticon-barbell"></i>
+                </div>
+                <div class="col-sm-7">
+                    <h4 class="font-weight-bold">Uzman Ekip ve Ekipmanlar</h4>
+                    <p>FakeFitte bulunan eğitmenlerimiz sizin kişisel hedeflerinize ulaşmanıza yardımcı olmak için sizi destekler, özel antrenman programları oluşturur ve doğru formda egzersiz yapmanızı sağlar. </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-5">
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <img class="img-fluid mb-3 mb-sm-0" src="~/Content/img/feature-2.jpg" alt="Image">
+                    <i class="flaticon-training"></i>
+                </div>
+                <div class="col-sm-7">
+                    <h4 class="font-weight-bold"> Çeşitli Spor Seçenekleri</h4>
+                    <p>FakeFit, spor tutkunları için çeşitli spor seçenekleri sunar. Kardiyo, güç antrenmanları, yoga, pilates, dans ve daha fazlası gibi farklı spor aktivitelerine katılabilirsiniz. FakeFit size bu fırsatı sunar.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-5">
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <img class="img-fluid mb-3 mb-sm-0" src="~/Content/img/feature-3.jpg" alt="Image">
+                    <i class="flaticon-trends"></i>
+                </div>
+                <div class="col-sm-7">
+                    <h4 class="font-weight-bold">Temizlik ve Hijyen</h4>
+                    <p>Sağlık ve güvenlik, FakeFit'in önceliklerinden biridir. Salonumuz, düzenli olarak temizlenir ve dezenfekte edilir. Ayrıca, spor salonumuzda hijyen standartlarına sıkı bir şekilde uyulur. </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-5">
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <img class="img-fluid mb-3 mb-sm-0" src="~/Content/img/feature-4.jpg" alt="Image">
+                    <i class="flaticon-support"></i>
+                </div>
+                <div class="col-sm-7">
+                    <h4 class="font-weight-bold">Esnek Üyelik Seçenekleri</h4>
+                    <p>FakeFit, farklı bütçelere ve ihtiyaçlara uygun üyelik seçenekleri sunar. İhtiyacınıza ve tercihlerinize göre, günlük, aylık veya yıllık üyelikler arasından seçim yapabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- GYM Feature End -->
+<!-- Testimonial Start -->
+<div class="container-fluid position-relative testimonial mt-5" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="row px-3 align-items-center">
+            <div class="col-md-6 bg-secondary">
+                <div class="d-flex align-items-center px-3" style="min-height: 450px;">
+                    <div id="carouselId" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselId" data-slide-to="1"></li>
+                            <li data-target="#carouselId" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <div class="d-flex align-items-center mb-4 text-white">
+                                    <img width="80" height="80" class="rounded-circle bg-dark p-2" src="~/Content/img/testimonial-1.jpg"
+                                         alt="Image">
+                                    <div class="pl-4">
+                                        <h4 class="text-primary">Mustafa Zahid Gürbüz</h4>
+                                        <p class="m-0">Üye</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
+                                    "FakeFit Spor Salonu, benim spor hedeflerime ulaşmamda harika bir destek oldu. Eğitmenlerin uzmanlığı ve tesisin kalitesi, spor deneyimimi çok daha keyifli ve etkili hale getirdi."
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center mb-4 text-white">
+                                    <img width="80" height="80" class="rounded-circle bg-dark p-2" src="~/Content/img/testimonial-2.jpg"
+                                         alt="Image">
+                                    <div class="pl-4">
+                                        <h4 class="text-primary">Çağrı Üçüncü</h4>
+                                        <p class="m-0">Üye</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
+                                    "FakeFit Spor Salonu, kendimi daha iyi hissetmek ve formda kalmak için harika bir yer. Ekipmanlarının kalitesi ve profesyonel eğitmenlerin rehberliği sayesinde hedeflerime hızlıca ulaşabiliyorum."
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center mb-4 text-white">
+                                    <img width="80" height="80" class="rounded-circle bg-dark p-2" src="~/Content/img/testimonial-3.jpg"
+                                         alt="Image">
+                                    <div class="pl-4">
+                                        <h4 class="text-primary">Kaan Yolay</h4>
+                                        <p class="m-0">Üye</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
+                                    "FakeFit Spor Salonu, bana sadece fiziksel sağlığı değil, aynı zamanda spor yaparken ruh huzuru bulmayı da öğretti. Profesyonel eğitmenlerin ilgisi ve tesisin modern donanımı, spor salonunu benim için vazgeçilmez kılıyor."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pl-md-3 d-none d-md-block">
+                    <h4 class="text-primary">Referanslarımız</h4>
+                    <h4 class="display-4 mb-4 text-white font-weight-bold">Müşterilerimiz Neler Diyor?</h4>
+                    <p class="m-0 text-white">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->

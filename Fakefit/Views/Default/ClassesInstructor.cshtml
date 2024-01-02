@@ -1,0 +1,96 @@
+﻿@model List<Fakefit.Models.all_lessons>
+@{
+    ViewBag.Title = "ClassesInstructor";
+    Layout = "~/Views/Shared/_EğitmenLayout.cshtml";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Dersler</h4>
+        <div class="d-inline-flex">
+            <p class="m-0 text-white"><a class="text-white" href="@Url.Action("IndexInstructor","Default")">Ana Sayfa</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Dersler</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<div class="container mb-5" style="height: 400px; overflow: scroll; width: 100%;">
+    <h2>Ders Programım</h2>
+
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-bordered table-stripedy">
+        <thead>
+            <tr>
+                <th>Eğitmenin Adı</th>
+                <th>Eğitimin Adı</th>
+                <th>Eğitimin Günü</th>
+                <th>Eğitimin Saati</th>
+                <th>Eğitimin Türü</th>
+                <th>Kullanıcı adı</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+
+
+            @foreach (var item in Model.Where(x => x.name_of_user == "Admin"))
+            {
+
+
+                <tr>
+                    <td>@item.name_of_teacher</td>
+                    <td>@item.name_of_lesson</td>
+                    <td>@item.date_of_lesson</td>
+                    <td>@item.hour_of_lesson</td>
+                    <td>@item.kind_of_lesson</td>
+                    <td>@item.name_of_user</td>
+                </tr>
+            }
+            @foreach (var item in Model.Where(x => x.kind_of_lesson == "Özel"))
+            {
+
+
+                <tr>
+                    <td>@item.name_of_teacher</td>
+                    <td>@item.name_of_lesson</td>
+                    <td>@item.date_of_lesson</td>
+                    <td>@item.hour_of_lesson</td>
+                    <td>@item.kind_of_lesson</td>
+                    <td>@item.name_of_user</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    </div>
+    <!-- Class Timetable End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/lib/easing/easing.min.js"></script>
+    <script src="~/Content/lib/waypoints/waypoints.min.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    </body>
+
+    </html>
+

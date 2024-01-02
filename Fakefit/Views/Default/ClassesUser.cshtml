@@ -1,0 +1,263 @@
+﻿@model Fakefit.ViewModel
+@{
+    ViewBag.Title = "ClassesUser";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Dersler</h4>
+        <div class="d-inline-flex">
+            <p class="m-0 text-white"><a class="text-white" href="@Url.Action("IndexUser","Default")">Ana Sayfa</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Dersler</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5" style="height: 400px; overflow: scroll; width: 100%;">
+    <h2>Alınabilecek Grup Dersleri</h2>
+   
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-bordered table-stripedy">
+        <thead>
+            <tr>
+                <th>Eğitmenin Adı</th>
+                <th>Eğitimin Günü</th>
+                <th>Eğitimin Saati</th>
+                <th>Eğitimin Adı</th>
+                <th>Eğitimin Türü</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+
+         
+            @foreach (var item in Model.LessonsGroup)
+            {
+
+
+            <tr>
+                <td>@item.name_of_teacher</td>
+                <td>@item.date_of_lesson</td>
+                <td>@item.hour_of_lesson</td>
+                <td>@item.name_of_lesson</td>
+                <td>@item.kind_of_lesson</td>
+            </tr>
+            }
+           
+        </tbody>
+    </table>
+    
+</div>
+    <!-- Page Header End -->
+    <div class="container-fluid p-0">
+        <div id="blog-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="height: 590px">
+                    <img style="width:100%;height:100%" src="~/Content/img/arkaplan.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="container pt-5">
+                            
+                            <div class="row align-items-center mt-4">
+
+                                
+
+                                <div class="col-sm-12 text-center mb-2">
+
+
+                                    @if (ViewBag.hata == "Seçtiğiniz grup dersine başarıyla kaydoldunuz..")
+                                    {
+                                        <div class="alert alert-success mt-4 d-flex align-items-center justify-content-center">
+                                            @ViewBag.Hata
+                                        </div>
+                                        
+                                    }
+                                    else if (ViewBag.hata == "Seçtiğiniz özel derse başarıyla kaydoldunuz..")
+                                    {
+                                        <div class="alert alert-success mt-4 d-flex align-items-center justify-content-center">
+                                            @ViewBag.Hata
+                                        </div>
+                                        
+                                    }
+                                    else if (ViewBag.hata != null)
+                                    {
+                                        <div class="alert alert-danger mt-4 d-flex align-items-center justify-content-center">
+                                            @ViewBag.Hata
+                                        </div>
+                                        
+                                    }
+
+                                   
+                                    <H1 class="text-primary font-weight-bold">Ders Kayıt</H1>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <div class="register-form col-sm-12">
+                                        <div id="success"></div>
+                                        <form action="/Default/ClassesUser" method="post" name="sentMessage" class="col-sm-6 align-self-center mb-5  align-content-cente" id="registerForm" novalidate="novalidate" style="margin-left:273px">
+
+                                            <div class="control-group col-sm-12" style="height: 45px">
+
+                                                <select class="form-control mb-3" name="name">
+                                                    <option>Eğitmeni seç</option>
+                                                    @foreach (var item in Model.register)
+                                                    {
+                                                        <option>@item.name @item.surname</option>
+                                                    }
+
+                                                </select>
+                                            </div>
+
+                                            <div class="control-group col-sm-12" style="height: 45px">
+
+                                                <input type="date" class="form-control" name="Date" placeholder="Dersin gününü seç" required="required" data-validation-required-message="Please enter your surname" />
+
+                                                <p class="help-block text-danger"></p>
+
+                                            </div>
+
+                                            <div class="control-group col-sm-12" style="height: 45px">
+
+
+                                                <select class="form-control mb-3" name="Time">
+                                                    <option>Dersin saatini seç</option>
+                                                    <option>08:00</option>
+                                                    <option>10:00</option>
+                                                    <option>12:00</option>
+                                                    <option>14:00</option>
+                                                    <option>16:00</option>
+                                                    <option>18:00</option>
+                                                    <option>20:00</option>
+                                                </select>
+                                            </div>
+                                            <div class="control-group col-sm-12" style="height: 45px">
+
+
+                                                <select class="form-control mb-3" name="Lessons">
+                                                    <option>Dersin adını seç</option>
+                                                    <option>Core</option>
+                                                    <option>Cycling</option>
+                                                    <option>Kardiyo</option>
+                                                    <option>Dans</option>
+                                                    <option>Pilates</option>
+                                                    <option>Kuvvet</option>
+                                                    <option>Yoga</option>
+                                                </select>
+                                            </div>
+                                            <div class="control-group col-sm-12" style="height: 45px">
+
+
+                                                <select class="form-control mb-3" name="Kind">
+                                                    <option>Dersin türünü seç</option>
+                                                    <option>Özel</option>
+                                                    <option>Grup</option>
+
+                                                </select>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-12 pb-5 text-center mb-5 text-align: center;">
+                                                <button class="btn btn-outline-light btn-info" type="submit" id="sendMessageButton">Kayıt Et</button>
+                                            </div>
+                                        </form>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-5" style="height: 400px; overflow: scroll; width: 100%;">
+        <h2>Derslerim</h2>
+        
+        <input class="form-control" id="myInputt" type="text" placeholder="Search..">
+        <br>
+        <table class="table table-bordered table-stripedy">
+            <thead>
+                <tr>
+                    <th>Eğitmenin Adı</th>
+                    <th>Eğitimin Günü</th>
+                    <th>Eğitimin Saati</th>
+                    <th>Eğitimin Adı</th>
+                    <th>Eğitimin Türü</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody id="myTablee">
+                @foreach (var item in Model.MyLessons)
+                {
+
+
+                    <tr>
+                        <td>@item.name_of_teacher</td>
+                        <td>@item.date_of_lesson</td>
+                        <td>@item.hour_of_lesson</td>
+                        <td>@item.name_of_lesson</td>
+                        <td>@item.kind_of_lesson</td>
+                        <td>
+                            @using (Html.BeginForm("DeleteLesson", "Default", new { FormMethod.Post }))
+                            {
+                                var id = item.id;
+                                <input type="hidden" name="id" value="@id" />
+                                <button class="btn btn-danger" type="submit" id="sendMessageButton">Sil</button>
+
+                            }
+                        </td>
+                    </tr>
+                }
+              
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/lib/easing/easing.min.js"></script>
+    <script src="~/Content/lib/waypoints/waypoints.min.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInputt").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTablee tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
